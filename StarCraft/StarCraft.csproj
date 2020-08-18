@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FF2D6842-13A9-42E9-9975-E0E635721F8B}</ProjectGuid>
+    <ProjectGuid>{6559C75C-2400-47E3-877A-4EC3705C0FFA}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>BaseballCs</RootNamespace>
-    <AssemblyName>BaseballCs</AssemblyName>
+    <RootNamespace>StarCraft</RootNamespace>
+    <AssemblyName>StarCraft</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,11 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Answer.cs" />
-    <Compile Include="Guess.cs" />
+    <Compile Include="Firebat.cs" />
+    <Compile Include="Marine.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Result.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
