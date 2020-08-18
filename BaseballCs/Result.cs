@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BaseballCs
 {
-    public struct Result
+    public class Result
     {
         // naming convention
 
