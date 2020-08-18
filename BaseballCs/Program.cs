@@ -27,10 +27,7 @@ namespace BaseballCs
                     break;
             }
 
-            Console.WriteLine("[정답]");
-            for (int i = 0; i < Digit; i++)
-                Console.Write(answers[i] + " ");
-            Console.WriteLine();
+            PrintNumbers("[정답]", answers);
 
 
             // 3. 결과를 계산한다.
@@ -44,11 +41,7 @@ namespace BaseballCs
                 for (int i = 0; i < Digit; i++)
                     guesses[i] = int.Parse(Console.ReadLine());
 
-                Console.WriteLine("[추측]");
-                for (int i = 0; i < Digit; i++)
-                    Console.Write(guesses[i] + " ");
-                Console.WriteLine();
-
+                PrintNumbers("[추측]", guesses);
 
                 tryCount++;
 
@@ -76,6 +69,14 @@ namespace BaseballCs
 
             // 5. 도전횟수를 출력한다.
             Console.WriteLine($"[횟수] {tryCount}");
+        }
+
+        private static void PrintNumbers(string prefix, int[] numbers)
+        {
+            Console.WriteLine(prefix);
+            for (int i = 0; i < Digit; i++)
+                Console.Write(numbers[i] + " ");
+            Console.WriteLine();
         }
     }
 }
