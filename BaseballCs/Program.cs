@@ -16,24 +16,20 @@ namespace BaseballCs
             // 1. 정답을 생성한다.
             // Base Class Library
             Random random = new Random(1);
-            int answer0;
-            int answer1;
-            int answer2;
+            int[] answers = new int[Digit];
 
             while (true)
             {
-                answer0 = random.Next(MaxValue); // Ctrl+D
-                answer1 = random.Next(MaxValue); // Ctrl+D
-                answer2 = random.Next(MaxValue); // Ctrl+D
+                for (int i = 0; i < Digit; i++)
+                    answers[i] = random.Next(MaxValue); // Ctrl+D
 
-                if (answer0 != answer1 && answer1 != answer2 && answer2 != answer0)
+                if (answers[0] != answers[1] && answers[1] != answers[2] && answers[2] != answers[0])
                     break;
             }
 
             Console.WriteLine("[정답]");
-            Console.Write(answer0 + " ");
-            Console.Write(answer1 + " ");
-            Console.Write(answer2 + " ");
+            for (int i = 0; i < Digit; i++)
+                Console.Write(answers[i] + " ");
             Console.WriteLine();
 
 
@@ -44,14 +40,13 @@ namespace BaseballCs
             {
                 // 2. 추측을 입력받는다.
                 // C+S+L
-                int guess0 = int.Parse(Console.ReadLine());
-                int guess1 = int.Parse(Console.ReadLine());
-                int guess2 = int.Parse(Console.ReadLine());
+                int[] guesses = new int[Digit];
+                for (int i = 0; i < Digit; i++)
+                    guesses[i] = int.Parse(Console.ReadLine());
 
                 Console.WriteLine("[추측]");
-                Console.Write(guess0 + " ");
-                Console.Write(guess1 + " ");
-                Console.Write(guess2 + " ");
+                for (int i = 0; i < Digit; i++)
+                    Console.Write(guesses[i] + " ");
                 Console.WriteLine();
 
 
@@ -61,26 +56,19 @@ namespace BaseballCs
                 int ball = 0;
                 int @out = 0;
 
-                if (guess0 == answer0)
-                    strike++;
-                else if (guess0 == answer1 || guess0 == answer2)
-                    ball++;
-                else
-                    @out++;
+                for (int i = 0; i < Digit; i++)
+                {
+                    int j = (i + 1) % Digit;
+                    int k = (i + 2) % Digit;
 
-                if (guess1 == answer1)
-                    strike++;
-                else if (guess1 == answer2 || guess1 == answer0)
-                    ball++;
-                else
-                    @out++;
+                    if (guesses[i] == answers[i])
+                        strike++;
+                    else if (guesses[i] == answers[j] || guesses[i] == answers[k])
+                        ball++;
+                    else
+                        @out++;
 
-                if (guess2 == answer2)
-                    strike++;
-                else if (guess2 == answer0 || guess2 == answer1)
-                    ball++;
-                else
-                    @out++;
+                }
 
                 Console.WriteLine($"[S]{strike} [B]{ball} [O]{@out}");
 
