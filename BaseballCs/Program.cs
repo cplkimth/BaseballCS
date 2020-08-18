@@ -8,6 +8,9 @@ namespace BaseballCs
 {
     class Program
     {
+        const int MaxValue = 10;
+        const int Digit = 3;
+
         static void Main(string[] args)
         {
             // 1. 정답을 생성한다.
@@ -19,9 +22,9 @@ namespace BaseballCs
 
             while (true)
             {
-                answer0 = random.Next(10); // Ctrl+D
-                answer1 = random.Next(10); // Ctrl+D
-                answer2 = random.Next(10); // Ctrl+D
+                answer0 = random.Next(MaxValue); // Ctrl+D
+                answer1 = random.Next(MaxValue); // Ctrl+D
+                answer2 = random.Next(MaxValue); // Ctrl+D
 
                 if (answer0 != answer1 && answer1 != answer2 && answer2 != answer0)
                     break;
@@ -82,7 +85,7 @@ namespace BaseballCs
                 Console.WriteLine($"[S]{strike} [B]{ball} [O]{@out}");
 
                 // 4. 정답과 추측이 입력하지 않으면 2번으로 돌아간다.
-                if (strike == 3)
+                if (strike == Digit)
                     break;
             }
 
