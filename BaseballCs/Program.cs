@@ -52,9 +52,7 @@ namespace BaseballCs
 
                 tryCount++;
 
-                int strike = 0;
-                int ball = 0;
-                int @out = 0;
+                Result result = new Result();
 
                 for (int i = 0; i < Digit; i++)
                 {
@@ -62,18 +60,17 @@ namespace BaseballCs
                     int k = (i + 2) % Digit;
 
                     if (guesses[i] == answers[i])
-                        strike++;
+                        result.Strike++;
                     else if (guesses[i] == answers[j] || guesses[i] == answers[k])
-                        ball++;
+                        result.Ball++;
                     else
-                        @out++;
-
+                        result.Out++;
                 }
 
-                Console.WriteLine($"[S]{strike} [B]{ball} [O]{@out}");
+                Console.WriteLine($"[S]{result.Strike} [B]{result.Ball} [O]{result.Out}");
 
                 // 4. 정답과 추측이 입력하지 않으면 2번으로 돌아간다.
-                if (strike == Digit)
+                if (result.Strike == Digit)
                     break;
             }
 
