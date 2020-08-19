@@ -29,5 +29,34 @@ namespace StarCraft
             X = x;
             Y = y;
         }
+
+        public Unit()
+        {
+            HP = 50;
+        }
+
+        public int HP {get; protected set;}
+
+        public void TakeDamage(int damage)
+        {
+            while (damage > 0 && HP > 0)
+            {
+                damage--;
+                HP--;
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"I am a {UnitName} and my HP is {HP}";
+        }
+
+        protected string UnitName
+        {
+            get
+            {
+                return "OOO"
+            }
+        }
     }
 }

@@ -8,6 +8,5 @@ namespace StarCraft
 {
     class Marine : Unit
     {
-        
     }
 }
