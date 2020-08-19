@@ -10,7 +10,14 @@ namespace StarCraft
     {
         public int X;
         public int Y;
-        public int HP;
+        private int hp;
+
+        public Marine()
+        {
+            X = 1;
+            Y = 1;
+            hp = 50;
+        }
 
         public void Move(int x, int y)
         {
@@ -20,7 +27,13 @@ namespace StarCraft
 
         public void BeAttacked(int damage)
         {
-            HP -= damage;
+            while (damage > 0 && hp > 0)
+            {
+                hp--;
+                damage--;
+            }
         }
+
+
     }
 }

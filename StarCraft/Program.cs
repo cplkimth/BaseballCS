@@ -11,16 +11,12 @@ namespace StarCraft
         static void Main(string[] args)
         {
             Marine m1 = new Marine();
-            Marine m2 = new Marine();
-
-            //MoveMarine(m1, 100, 100);
-            m1.Move(100, 100);
             
-            //BeAttacked(m2, 3);
-            m2.BeAttacked(3);
+            m1.BeAttacked(100);
 
-            //Firebat firebat = new Firebat();
-            //MoveFirebat(firebat, 100, 100);
+            m1.hp = 30;
+            Console.WriteLine(m1.hp);
+
         }
     }
 }
