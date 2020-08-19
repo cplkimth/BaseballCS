@@ -21,5 +21,10 @@ namespace BaseballCs
                     break;
             }
         }
+
+        protected override string GetPrefix()
+        {
+            return "[정답]";
+        }
     }
 }

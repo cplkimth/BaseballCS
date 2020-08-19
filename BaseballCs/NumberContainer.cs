@@ -12,10 +12,15 @@ namespace BaseballCs
         
         public void Print()
         {
-            Console.WriteLine("[정답]");
+            Console.WriteLine(GetPrefix());
             for (int i = 0; i < Program.Digit; i++)
                 Console.Write(numbers[i] + " ");
             Console.WriteLine();
+        }
+
+        protected virtual string GetPrefix() // overridable, rewritable
+        {
+            return null;
         }
 
         public int this[int index] => numbers[index];
