@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StarCraft
 {
-    class Unit
+    abstract class Unit
     {
         public int X { get; set; } // auto property
 
@@ -37,7 +37,7 @@ namespace StarCraft
 
         public int HP {get; protected set;}
 
-        public void TakeDamage(int damage)
+        public virtual void TakeDamage(int damage)
         {
             while (damage > 0 && HP > 0)
             {
@@ -51,12 +51,9 @@ namespace StarCraft
             return $"I am a {UnitName} and my HP is {HP}";
         }
 
-        protected string UnitName
+        protected abstract string UnitName
         {
-            get
-            {
-                return "OOO"
-            }
+            get;
         }
     }
 }
