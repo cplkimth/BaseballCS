@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace BaseballCs
 {
-    public class Answer
+    public class Answer : NumberContainer
     {
-        private int[] numbers = new int[Program.Digit];
-
         public void Generate()
         {
             Random random = new Random(1);
@@ -23,15 +21,5 @@ namespace BaseballCs
                     break;
             }
         }
-
-        public void Print()
-        {
-            Console.WriteLine("[정답]");
-            for (int i = 0; i < Program.Digit; i++)
-                Console.Write(numbers[i] + " ");
-            Console.WriteLine();
-        }
-
-        public int this[int index] => numbers[index];
     }
 }
