@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace BaseballCs
 {
-    class Answer
+    public class Answer
     {
-        public int[] numbers = new int[Program.Digit];
+        private int[] numbers = new int[Program.Digit];
 
-        internal void Generate()
+        public void Generate()
         {
             Random random = new Random(1);
 
@@ -24,7 +24,7 @@ namespace BaseballCs
             }
         }
 
-        internal void Print()
+        public void Print()
         {
             Console.WriteLine("[정답]");
             for (int i = 0; i < Program.Digit; i++)
@@ -33,6 +33,5 @@ namespace BaseballCs
         }
 
         public int this[int index] => numbers[index];
-
     }
 }

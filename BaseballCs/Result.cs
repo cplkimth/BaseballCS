@@ -10,11 +10,11 @@ namespace BaseballCs
     {
         // naming convention
 
-        public int Strike;
-        public int Ball;
-        public int Out;
+        private int strike;
+        private int ball;
+        private int @out;
 
-        internal void Calculate(Answer answer, Guess guess)
+        public void Calculate(Answer answer, Guess guess)
         {
             for (int i = 0; i < Program.Digit; i++)
             {
@@ -22,22 +22,22 @@ namespace BaseballCs
                 int k = (i + 2) % Program.Digit;
 
                 if (guess[i] == answer[i])
-                    Strike++;
+                    strike++;
                 else if (guess[i] == answer[j] || guess[i] == answer[k])
-                    Ball++;
+                    ball++;
                 else
-                    Out++;
+                    @out++;
             }
         }
 
-        internal void Print()
+        public void Print()
         {
-            Console.WriteLine($"[S]{Strike} [B]{Ball} [O]{Out}");
+            Console.WriteLine($"[S]{strike} [B]{ball} [O]{@out}");
         }
 
-        internal bool IsCorrect()
+        public bool IsCorrect()
         {
-            return Strike == Program.Digit;
+            return strike == Program.Digit;
         }
     }
 }

@@ -3,9 +3,9 @@ using System;
 
 namespace BaseballCs
 {
-    internal class Guess
+    public class Guess
     {
-        public int[] numbers = new int[Program.Digit];
+        private int[] numbers = new int[Program.Digit];
 
         public void Input()
         {
@@ -13,7 +13,7 @@ namespace BaseballCs
                 numbers[i] = int.Parse(Console.ReadLine());
         }
 
-        internal void Print()
+        public void Print()
         {
             Console.WriteLine("[추측]");
             for (int i = 0; i < Program.Digit; i++)
