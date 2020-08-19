@@ -13,23 +13,31 @@ namespace StarCraft
     {
         static void Main(string[] args)
         {
-            Unit m1 = new Marine();
-            m1.TakeDamage(30);
-            Console.WriteLine(m1);
+            Marine m1 = new Marine();
+            Ghost g1 = new Ghost();
 
-            Unit f1 = new Firebat();
-            f1.TakeDamage(20);
-            Console.WriteLine(f1);
-
-            Unit z1 = new Zealot();
-            z1.TakeDamage(150);
-            Console.WriteLine(z1);
+            UseSpecialAbility(m1, 3);
+            UseSpecialAbility(g1, 3);
         }
 
-        private static void LetDance(Unit unit) // overloading
+        static void UseSpecialAbility(ISpecialUnit unit, int n)
         {
-            unit.Move(100, 100);
-            unit.Move(1, 1);
+            //for (int i = 0; i < n; i++)
+            //{
+            //    if (unit is Marine) // instanceof
+            //        ((Marine)unit).UseSteamPack();
+            //    if (unit is Ghost)
+            //        ((Ghost)unit).Cloak();
+
+            //    //Marine m = unit as Marine;
+            //    //if (m != null)
+            //    //    m.UseSteamPack();
+            //}
+
+            for (int i = 0; i < n; i++)
+            {
+                unit.UseSpecialAbility();
+            }
         }
     }
 }

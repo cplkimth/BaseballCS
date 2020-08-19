@@ -1,6 +1,6 @@
 ﻿namespace StarCraft.Units.TerranUnits
 {
-    class Firebat : Unit
+    class Firebat : TerranUnit
     {
         protected override string UnitName => "Firebat";
     }

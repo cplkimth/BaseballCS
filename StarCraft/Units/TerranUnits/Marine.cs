@@ -1,6 +1,6 @@
 ﻿namespace StarCraft.Units.TerranUnits
 {
-    class Marine : Unit
+    class Marine : TerranUnit, ISpecialUnit
     {
         protected override string UnitName
         {
@@ -8,6 +8,16 @@
             {
                 return "Marine";
             }
+        }
+
+        public void UseSpecialAbility()
+        {
+            UseSteamPack();
+        }
+
+        public void UseSteamPack()
+        {
+            System.Console.WriteLine("스팀팩");
         }
     }
 }
