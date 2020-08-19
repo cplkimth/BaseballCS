@@ -10,30 +10,27 @@ namespace StarCraft
     {
         static void Main(string[] args)
         {
-            Marine m1 = new Marine();
-            m1.X = 1;
-            //m1.Y = 2;
+            Unit m1 = new Marine();
+            LetDance(m1);
 
-            Marine m2 = new Marine();
+            Unit f1 = new Firebat();
+            LetDance(f1);
 
-            m1.BeAttacked(5);
-            m2.BeAttacked(10);
-            Console.WriteLine(m1.HP);
-            Console.WriteLine(m2.HP);
+            Unit[] soldiers = new Unit[2];
+            soldiers[0] = m1;
+            soldiers[1] = f1;
 
-            Console.WriteLine(Marine.MaxHP);
-            Console.WriteLine(Marine.MaxHP);
+            for (int i = 0; i < soldiers.Length; i++)
+            {
+                soldiers[i].Move(10, 12);
+            }
 
-            
-            m1.BeAttacked(100);
+        }
 
-            m1.SetHP(30);
-            Console.WriteLine(m1.GetHP());
-            m1.SetHP(m1.GetHP() + 1);
-
-            m1.HP = 30;
-            Console.WriteLine(m1.HP);
-            m1.HP = m1.HP + 1;
+        private static void LetDance(Unit unit) // overloading
+        {
+            unit.Move(100, 100);
+            unit.Move(1, 1);
         }
     }
 }

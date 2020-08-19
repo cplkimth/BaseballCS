@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace StarCraft
 {
-    class Firebat
+    class Firebat : Unit
     {
-        public int X;
-        public int Y;
-        public int HP;
     }
 }
