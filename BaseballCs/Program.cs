@@ -13,6 +13,8 @@ namespace BaseballCs
 
         static void Main(string[] args)
         {
+            //NumberContainer container = new NumberContainer();
+
             // 1. 정답을 생성한다.
             Answer answer = new Answer();
             answer.Generate();

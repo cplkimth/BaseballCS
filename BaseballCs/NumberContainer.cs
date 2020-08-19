@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BaseballCs
 {
-    public class NumberContainer
+    public abstract class NumberContainer
     {
         protected int[] numbers = new int[Program.Digit];
         
@@ -18,10 +18,7 @@ namespace BaseballCs
             Console.WriteLine();
         }
 
-        protected virtual string GetPrefix() // overridable, rewritable
-        {
-            return null;
-        }
+        protected abstract string GetPrefix();
 
         public int this[int index] => numbers[index];
     }
