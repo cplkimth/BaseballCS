@@ -1,4 +1,6 @@
-﻿namespace StarCraft.Units
+﻿using System;
+
+namespace StarCraft.Units
 {
     abstract class Unit
     {
@@ -29,7 +31,7 @@
             HP = 50;
         }
 
-        public int HP {get; protected set;}
+        public int HP { get; protected set; }
 
         public virtual void TakeDamage(int damage)
         {
@@ -37,6 +39,12 @@
             {
                 damage--;
                 HP--;
+
+                if (HP == 0)
+                {
+                    OnDead(damage);
+                    break;
+                }
             }
         }
 
@@ -49,5 +57,45 @@
         {
             get;
         }
+
+        #region Dead event things for C# 3.0
+        public event EventHandler<DeadEventArgs> Dead;
+
+        protected virtual void OnDead(DeadEventArgs e)
+        {
+            if (Dead != null)
+                Dead(this, e);
+        }
+
+        private DeadEventArgs OnDead(int undamagedDamage)
+        {
+            DeadEventArgs args = new DeadEventArgs(undamagedDamage);
+            OnDead(args);
+
+            return args;
+        }
+
+        private DeadEventArgs OnDeadForOut()
+        {
+            DeadEventArgs args = new DeadEventArgs();
+            OnDead(args);
+
+            return args;
+        }
+
+        public class DeadEventArgs : System.EventArgs
+        {
+            public int UndamagedDamage { get; set; }
+
+            public DeadEventArgs()
+            {
+            }
+
+            public DeadEventArgs(int undamagedDamage)
+            {
+                UndamagedDamage = undamagedDamage;
+            }
+        }
+        #endregion
     }
 }

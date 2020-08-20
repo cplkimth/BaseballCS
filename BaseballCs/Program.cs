@@ -12,7 +12,7 @@ namespace BaseballCs
         public const int MaxValue = 10;
         public const int Digit = 3;
 
-        private static void PrintSum(object sender, DuplicatedEventArgs e)
+        private static void PrintSum(object sender, Answer.DuplicatedEventArgs e)
         {
             int sum = e.Numbers.Sum();
             Console.WriteLine(sum);

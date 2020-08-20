@@ -10,8 +10,6 @@ namespace BaseballCs
 
     public class Answer : NumberContainer
     {
-        public event EventHandler<DuplicatedEventArgs> Duplicated;
-
         //public void Generate(Duplication onDuplicated)
         public void Generate()
         {
@@ -25,9 +23,7 @@ namespace BaseballCs
                 if (numbers[0] != numbers[1] && numbers[1] != numbers[2] && numbers[2] != numbers[0])
                     break;
 
-                if (Duplicated != null)
-                    OnDuplicated(numbers);
-                //onDuplicated(numbers);
+                OnDuplicated(numbers);
             }
         }
 
@@ -36,21 +32,44 @@ namespace BaseballCs
             return "[정답]";
         }
 
-        protected void OnDuplicated(int[] numbers)
+        #region Duplicated event things for C# 3.0
+        public event EventHandler<DuplicatedEventArgs> Duplicated;
+
+        protected virtual void OnDuplicated(DuplicatedEventArgs e)
         {
             if (Duplicated != null)
-                Duplicated(this, new DuplicatedEventArgs(numbers));
+                Duplicated(this, e);
         }
-    }
 
-    public class DuplicatedEventArgs : EventArgs
-    {
-        public DuplicatedEventArgs(int[] numbers)
+        private DuplicatedEventArgs OnDuplicated(int[] numbers)
         {
-            Numbers = numbers;
+            DuplicatedEventArgs args = new DuplicatedEventArgs(numbers);
+            OnDuplicated(args);
+
+            return args;
         }
 
-        public int[] Numbers { get; set; }
-    }
+        private DuplicatedEventArgs OnDuplicatedForOut()
+        {
+            DuplicatedEventArgs args = new DuplicatedEventArgs();
+            OnDuplicated(args);
 
+            return args;
+        }
+
+        public class DuplicatedEventArgs : EventArgs
+        {
+            public int[] Numbers { get; set; }
+
+            public DuplicatedEventArgs()
+            {
+            }
+
+            public DuplicatedEventArgs(int[] numbers)
+            {
+                Numbers = numbers;
+            }
+        }
+        #endregion
+    }
 }
