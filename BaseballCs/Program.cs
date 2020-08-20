@@ -25,7 +25,7 @@ namespace BaseballCs
             Answer answer = new Answer();
             //answer.Generate(new Duplication(PrintDuplicatedNumbers));
             //answer.Generate(PrintSum);
-            answer.Generate(x => Console.WriteLine(x.Sum()));
+            answer.Generate(x => Console.WriteLine(x.Sum())); // lambda expression
             answer.Print();
 
 
