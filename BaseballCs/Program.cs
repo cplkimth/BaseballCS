@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,21 +12,21 @@ namespace BaseballCs
         public const int MaxValue = 10;
         public const int Digit = 3;
 
-        private static void PrintSum(int[] numbers)
+        private static void PrintSum(object sender, DuplicatedEventArgs e)
         {
-            int sum = numbers.Sum();
+            int sum = e.Numbers.Sum();
             Console.WriteLine(sum);
         }
 
         static void Main(string[] args)
         {
-            //NumberContainer container = new NumberContainer();
-
             // 1. 정답을 생성한다.
             Answer answer = new Answer();
             //answer.Generate(new Duplication(PrintDuplicatedNumbers));
             //answer.Generate(PrintSum);
-            answer.Generate(x => Console.WriteLine(x.Sum())); // lambda expression
+            //answer.Generate(x => Console.WriteLine(x.Sum())); // lambda expression
+            answer.Duplicated += PrintSum; // event handler
+            answer.Generate();
             answer.Print();
 
 

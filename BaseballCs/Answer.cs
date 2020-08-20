@@ -10,8 +10,10 @@ namespace BaseballCs
 
     public class Answer : NumberContainer
     {
+        public event EventHandler<DuplicatedEventArgs> Duplicated;
+
         //public void Generate(Duplication onDuplicated)
-        public void Generate(Action<int[]> onDuplicated)
+        public void Generate()
         {
             Random random = new Random();
 
@@ -23,7 +25,9 @@ namespace BaseballCs
                 if (numbers[0] != numbers[1] && numbers[1] != numbers[2] && numbers[2] != numbers[0])
                     break;
 
-                onDuplicated(numbers);
+                if (Duplicated != null)
+                    OnDuplicated(numbers);
+                //onDuplicated(numbers);
             }
         }
 
@@ -31,5 +35,22 @@ namespace BaseballCs
         {
             return "[정답]";
         }
+
+        protected void OnDuplicated(int[] numbers)
+        {
+            if (Duplicated != null)
+                Duplicated(this, new DuplicatedEventArgs(numbers));
+        }
     }
+
+    public class DuplicatedEventArgs : EventArgs
+    {
+        public DuplicatedEventArgs(int[] numbers)
+        {
+            Numbers = numbers;
+        }
+
+        public int[] Numbers { get; set; }
+    }
+
 }
