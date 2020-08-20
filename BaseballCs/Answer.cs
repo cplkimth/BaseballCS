@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace BaseballCs
 {
+    //public delegate void Duplication(int[] numbers);
+
     public class Answer : NumberContainer
     {
-        public void Generate()
+        //public void Generate(Duplication onDuplicated)
+        public void Generate(Action<int[]> onDuplicated)
         {
-            Random random = new Random(1);
+            Random random = new Random();
 
             while (true)
             {
@@ -19,6 +22,8 @@ namespace BaseballCs
 
                 if (numbers[0] != numbers[1] && numbers[1] != numbers[2] && numbers[2] != numbers[0])
                     break;
+
+                onDuplicated(numbers);
             }
         }
 

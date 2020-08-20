@@ -11,13 +11,21 @@ namespace BaseballCs
         public const int MaxValue = 10;
         public const int Digit = 3;
 
+        private static void PrintSum(int[] numbers)
+        {
+            int sum = numbers.Sum();
+            Console.WriteLine(sum);
+        }
+
         static void Main(string[] args)
         {
             //NumberContainer container = new NumberContainer();
 
             // 1. 정답을 생성한다.
             Answer answer = new Answer();
-            answer.Generate();
+            //answer.Generate(new Duplication(PrintDuplicatedNumbers));
+            //answer.Generate(PrintSum);
+            answer.Generate((x) => Console.WriteLine(x.Sum()));
             answer.Print();
 
 
