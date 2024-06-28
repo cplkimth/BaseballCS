@@ -13,29 +13,32 @@ public partial class Program
     private static void Main(string[] args)
     {
         // 1. 정답을 생성한다.
-        List<int> answers = GenerateAnswers();
-        PrintNumbers("[정답]", answers);
-
+        Answer answer = new Answer();
+        answer.Generate();
+        answer.Print();
+        
 
         var tryCount = 0;
 
         while (true)
         {
             // 2. 추측을 입력받는다.
-            List<int> guesses = InputGuesses();
-            PrintNumbers("[추측]", guesses);
+            Guess guess = new Guess();
+            guess.Input();
+            guess.Print();
 
 
             // 3. 결과를 계산한다.
             tryCount++;
 
             Result result = new();
-            CalculateResult(result, answers, guesses);
-            PrintResult(result);
+            result.Calculate(answer, guess);
+            result.Print();
 
 
             // 4. 정답과 추측이 일치하면 끝낸다.
-            if (IsCorrectResult(result))
+            // if (IsCorrectResult(result))
+            if (result.IsCorrect())
                 break;
         }
 
