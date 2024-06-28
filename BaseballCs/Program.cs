@@ -8,8 +8,11 @@ using System.Linq;
 
 namespace Baseball;
 
-public partial class Program
+internal partial class Program
 {
+    public const int MaxValue = 10;
+    public const int Digit = 3;
+
     private static void Main(string[] args)
     {
         // 1. 정답을 생성한다.
@@ -35,7 +38,7 @@ public partial class Program
             result.Calculate(answer, guess);
             result.Print();
 
-
+            
             // 4. 정답과 추측이 일치하면 끝낸다.
             // if (IsCorrectResult(result))
             if (result.IsCorrect())

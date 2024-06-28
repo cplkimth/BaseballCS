@@ -6,9 +6,9 @@ namespace Baseball;
 
 public class Result
 {
-    public int strike = 0;
-    public int ball = 0;
-    public int @out = 0;
+    private int _strike = 0;
+    private int _ball = 0;
+    private int _out = 0;
 
     public void Calculate(Answer answer, Guess guess)
     {
@@ -18,21 +18,21 @@ public class Result
             int k = (i + 2) % Program.Digit;
 
             if (guess.Get(i) == answer.Get(i))
-                strike++;
+                _strike++;
             else if (guess.Get(i) == answer.Get(j) || guess.Get(i) == answer.Get(k))
-                ball++;
+                _ball++;
             else
-                @out++;
+                _out++;
         }
     }
 
     public void Print()
     {
-        Console.WriteLine($"[S]{strike} [B]{ball} [O]{@out}");
+        Console.WriteLine($"[S]{_strike} [B]{_ball} [O]{_out}");
     }
 
     public bool IsCorrect()
     {
-        return strike == Program.Digit;
+        return _strike == Program.Digit;
     }
 }
