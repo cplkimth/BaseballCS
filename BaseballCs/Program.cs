@@ -8,11 +8,8 @@ using System.Linq;
 
 namespace Baseball;
 
-internal class Program
+internal partial class Program
 {
-    public const int MaxValue = 10;
-    public const int Digit = 3;
-
     private static void Main(string[] args)
     {
         // 1. 정답을 생성한다.
@@ -29,10 +26,7 @@ internal class Program
                 break;
         }
 
-        Console.WriteLine("[정답]");
-        foreach (int answer in answers)
-            Console.Write($"{answer} ");
-        Console.WriteLine();
+        PrintNumbers("[정답]", answers);
 
 
         var tryCount = 0;
@@ -47,10 +41,7 @@ internal class Program
                 guesses.Add(guess);
             }
             
-            Console.WriteLine("[추측]");
-            foreach (var guess in guesses)
-                Console.Write($"{guess} ");
-            Console.WriteLine();
+            PrintNumbers("[추측]", guesses);
 
 
             // 3. 결과를 계산한다.
