@@ -8,6 +8,9 @@ namespace Baseball;
 
 internal class Program
 {
+    public const int MaxValue = 10;
+    public const int Digit = 3;
+
     private static void Main(string[] args)
     {
         // 1. 정답을 생성한다.
@@ -18,9 +21,9 @@ internal class Program
 
         while (true)
         {
-            answer0 = random.Next(10);
-            answer1 = random.Next(10);
-            answer2 = random.Next(10);
+            answer0 = random.Next(MaxValue);
+            answer1 = random.Next(MaxValue);
+            answer2 = random.Next(MaxValue);
 
             if (answer0 != answer1 && answer1 != answer2 && answer2 != answer0)
                 break;
@@ -81,7 +84,7 @@ internal class Program
 
 
             // 4. 정답과 추측이 일치하면 끝낸다.
-            if (strike == 3)
+            if (strike == Digit)
                 break;
         }
 
