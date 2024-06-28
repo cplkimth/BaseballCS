@@ -9,10 +9,16 @@ public class NumberContainer
 
     public void Print()
     {
-        Console.WriteLine("[정답]");
+        string prefix = GetPrefix();
+        Console.WriteLine(prefix);
         foreach (var answer in _numbers)
             Console.Write($"{answer} ");
         Console.WriteLine();
+    }
+
+    protected virtual string GetPrefix() // overridable
+    {
+        throw new NotImplementedException("NumberContainer.GetPrefix");
     }
 
     public int Get(int index)

@@ -18,4 +18,9 @@ public class Guess : NumberContainer
             _numbers.Add(guess);
         }
     }
+
+    protected override string GetPrefix()
+    {
+        return "[추측]";
+    }
 }
