@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Baseball;
 
-public class NumberContainer
+public abstract class NumberContainer
 {
     protected List<int> _numbers;
 
@@ -16,10 +16,7 @@ public class NumberContainer
         Console.WriteLine();
     }
 
-    protected virtual string GetPrefix() // overridable
-    {
-        throw new NotImplementedException("NumberContainer.GetPrefix");
-    }
+    protected abstract string GetPrefix();
 
     public int Get(int index)
     {
