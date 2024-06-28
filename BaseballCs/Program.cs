@@ -8,24 +8,12 @@ using System.Linq;
 
 namespace Baseball;
 
-internal partial class Program
+public partial class Program
 {
     private static void Main(string[] args)
     {
         // 1. 정답을 생성한다.
-        var random = new Random(1);
-        List<int> answers = new List<int>();
-        
-        while (true)
-        {
-            answers.Clear();
-            for (int i = 0; i < Digit; i++)
-                answers.Add(random.Next(MaxValue));
-            
-            if (answers.Distinct().Count() == Digit)
-                break;
-        }
-
+        List<int> answers = GenerateAnswers();
         PrintNumbers("[정답]", answers);
 
 
@@ -34,13 +22,7 @@ internal partial class Program
         while (true)
         {
             // 2. 추측을 입력받는다.
-            var guesses = new List<int>();
-            for (int i = 0; i < Digit; i++)
-            {
-                int guess = int.Parse(Console.ReadLine());
-                guesses.Add(guess);
-            }
-            
+            List<int> guesses = InputGuesses();
             PrintNumbers("[추측]", guesses);
 
 
@@ -48,24 +30,12 @@ internal partial class Program
             tryCount++;
 
             Result result = new();
-
-            for (int i = 0; i < Digit; i++)
-            {
-                int j = (i + 1) % Digit;
-                int k = (i + 2) % Digit;
-
-                if (guesses[i] == answers[i])
-                    result.strike++;
-                else if (guesses[i] == answers[j] || guesses[i] == answers[k])
-                    result.ball++;
-                else
-                    result.@out++;
-            }
-            Console.WriteLine($"[S]{result.strike} [B]{result.ball} [O]{result.@out}");
+            CalculateResult(result, answers, guesses);
+            PrintResult(result);
 
 
             // 4. 정답과 추측이 일치하면 끝낸다.
-            if (result.strike == Digit)
+            if (IsCorrectResult(result))
                 break;
         }
 
