@@ -56,9 +56,7 @@ internal class Program
             // 3. 결과를 계산한다.
             tryCount++;
 
-            var strike = 0;
-            var ball = 0;
-            var @out = 0;
+            Result result = new();
 
             for (int i = 0; i < Digit; i++)
             {
@@ -66,17 +64,17 @@ internal class Program
                 int k = (i + 2) % Digit;
 
                 if (guesses[i] == answers[i])
-                    strike++;
+                    result.strike++;
                 else if (guesses[i] == answers[j] || guesses[i] == answers[k])
-                    ball++;
+                    result.ball++;
                 else
-                    @out++;
+                    result.@out++;
             }
-            Console.WriteLine($"[S]{strike} [B]{ball} [O]{@out}");
+            Console.WriteLine($"[S]{result.strike} [B]{result.ball} [O]{result.@out}");
 
 
             // 4. 정답과 추측이 일치하면 끝낸다.
-            if (strike == Digit)
+            if (result.strike == Digit)
                 break;
         }
 
